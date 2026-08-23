@@ -37,8 +37,8 @@
 
 ```bash
 # 1. Clone
-git clone https://github.com/rohitt31/aster-row-support-agent.git
-cd aster-row-support-agent
+git clone https://github.com/rohitt31/rag-agentic-support-system.git
+cd rag-agentic-support-system
 
 # 2. Virtual environment
 python -m venv venv
