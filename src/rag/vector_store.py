@@ -91,11 +91,29 @@ def build_index(chunks: list[Chunk], force_rebuild: bool = False) -> None:
     print(f"Indexed {len(ids)} chunks into ChromaDB.")
 
 
+def ensure_index() -> None:
+    """Ensure the ChromaDB index exists and has documents; builds automatically if empty."""
+    client = get_chroma_client()
+    embed_fn = get_embedding_function()
+    try:
+        collection = client.get_collection(name=COLLECTION_NAME, embedding_function=embed_fn)
+        if collection.count() > 0:
+            return
+    except Exception:
+        pass
+    
+    from src.config import KNOWLEDGE_BASE_DIR
+    from src.rag.chunker import chunk_all_documents
+    chunks = chunk_all_documents(KNOWLEDGE_BASE_DIR)
+    build_index(chunks, force_rebuild=False)
+
+
 def search(query: str, top_k: int = 5, where_filter: dict | None = None) -> list[dict]:
     """
     Search the vector store for relevant passages.
     Returns list of dicts with content, metadata, and distance score.
     """
+    ensure_index()
     client = get_chroma_client()
     embed_fn = get_embedding_function()
     

@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: aster-row-support-agent
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt && python build_index.py --rebuild
+    startCommand: gunicorn src.web:app --bind 0.0.0.0:$PORT
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: MODEL_NAME
+        value: gemini-2.0-flash
+      - key: EMBEDDING_TYPE
+        value: local
+      - key: PYTHON_VERSION
+        value: 3.11.9

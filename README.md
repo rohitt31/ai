@@ -3,11 +3,21 @@
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/downloads/)
 [![Unit Tests](https://img.shields.io/badge/unit_tests-37_passed-2ea44f?style=for-the-badge)](tests/)
 [![Eval Suite](https://img.shields.io/badge/eval_suite-22%2F22_passed-2ea44f?style=for-the-badge)](evaluation/)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow?style=for-the-badge)](LICENSE)
 
 > A production-grade **RAG customer support agent** for Aster & Row, built with groundedness-first design, privacy-safe order lookups, deterministic evaluation, and a modern web interface.
 
 **Key focus areas:** Reliability over breadth · Document precedence & conflict resolution · Privacy-safe data handling · Deterministic evaluation · Safe abstention & human handoff
+
+---
+
+## 🌐 Live Hosted Demo
+
+- **Hosted URL:** [https://rag-agentic-support-system.onrender.com](https://rag-agentic-support-system.onrender.com) *(or deploy your own below)*
+- **1-Click Free Cloud Deploy:** Click [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/rohitt31/rag-agentic-support-system) to launch on Render in 60 seconds (free tier).
+
+---
 
 ---
 
