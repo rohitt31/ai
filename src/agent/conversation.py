@@ -1,7 +1,4 @@
-"""
-Conversation manager for multi-turn support sessions.
-Maintains message history with a sliding window approach.
-"""
+
 
 from dataclasses import dataclass, field
 from src.config import MAX_HISTORY_TURNS

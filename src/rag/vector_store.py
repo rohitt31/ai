@@ -1,9 +1,3 @@
-"""
-Vector store management using ChromaDB.
-Handles indexing, persistence, and similarity search with metadata filtering.
-Supports both local (free) and OpenAI embeddings.
-"""
-
 import chromadb
 from chromadb.config import Settings
 

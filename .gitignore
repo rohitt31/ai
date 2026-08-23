@@ -1,12 +1,37 @@
-.chroma_db/
+# Python
 __pycache__/
 *.pyc
-.env
-.venv/
-venv/
+*.pyo
 *.egg-info/
 dist/
 build/
+*.egg
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Environment secrets
+.env
+
+# ChromaDB local index (rebuilt via build_index.py)
+.chroma_db/
+
+# Evaluation outputs (regenerated on each run)
 evaluation/results.json
-logs/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
 .DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log

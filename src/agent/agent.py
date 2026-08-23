@@ -1,8 +1,4 @@
-"""
-Core agent implementation using OpenAI-compatible chat completions with tool calling.
-Supports OpenAI, Groq, and Google Gemini as LLM providers.
-Orchestrates retrieval, order lookup, and response generation.
-"""
+
 
 import json
 from openai import OpenAI

@@ -229,6 +229,7 @@ def run_case(agent: SupportAgent, case: dict) -> CaseResult:
             if turn.get("role") == "user":
                 response = agent.chat(turn.get("content", ""), session_id)
                 all_tool_calls.extend(agent.get_last_tool_calls())
+                time.sleep(1.5)  # Respect API rate limits between turns
         
         duration_ms = int((time.time() - start_time) * 1000)
         
