@@ -35,3 +35,8 @@ Thumbs.db
 # Logs
 logs/
 *.log
+
+# Personal Notes / Cheatsheets (never commit)
+*CHEAT_SHEET*
+*cheat_sheet*
+*.notes
