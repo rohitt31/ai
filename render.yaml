@@ -9,7 +9,7 @@ services:
       - key: GEMINI_API_KEY
         sync: false
       - key: MODEL_NAME
-        value: gemini-2.0-flash
+        value: gemini-3.5-flash-lite
       - key: EMBEDDING_TYPE
         value: local
       - key: PYTHON_VERSION

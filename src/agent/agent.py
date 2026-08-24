@@ -152,6 +152,7 @@ class SupportAgent:
             return final_response
             
         except Exception as e:
+            print(f"[AGENT ERROR] {type(e).__name__}: {e}", flush=True)
             error_msg = f"I'm sorry, I encountered an error processing your request. Please try again or contact our support team at support@asterandrow.com or 1-800-555-ASTER."
             trace.log_error(str(e), "chat_completion")
             session.add_assistant_message(error_msg)

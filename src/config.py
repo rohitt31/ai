@@ -45,7 +45,7 @@ PROVIDER_DEFAULTS = {
     },
     "gemini": {
         "base_url": "https://generativelanguage.googleapis.com/v1beta/openai/",
-        "model": "gemini-3.6-flash",
+        "model": "gemini-3.5-flash-lite",
     },
 }
 
@@ -55,7 +55,13 @@ _provider_config = PROVIDER_DEFAULTS.get(LLM_PROVIDER, PROVIDER_DEFAULTS["openai
 # Final resolved settings
 OPENAI_API_KEY = API_KEY
 LLM_BASE_URL = os.getenv("LLM_BASE_URL", _provider_config["base_url"])
-MODEL_NAME = os.getenv("MODEL_NAME", _provider_config["model"])
+_raw_model = os.getenv("MODEL_NAME", _provider_config["model"])
+
+# Auto-migrate deprecated model names
+if _raw_model in ["gemini-2.0-flash", "gemini-1.5-flash", "gemini-2.5-flash"]:
+    MODEL_NAME = "gemini-3.5-flash-lite"
+else:
+    MODEL_NAME = _raw_model
 
 # Embedding model (only used if EMBEDDING_TYPE is "openai")
 EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "text-embedding-3-small")

@@ -1,3 +1,9 @@
+import sys
+from pathlib import Path
+
+# Add project root to sys.path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 import uuid
 import json
 from flask import Flask, request, jsonify, render_template_string
@@ -726,6 +732,11 @@ HTML_TEMPLATE = """
 """
 
 
+@app.route("/health")
+def health():
+    return jsonify({"status": "healthy", "service": "aster-row-support-agent"}), 200
+
+
 @app.route("/")
 def index():
     return render_template_string(HTML_TEMPLATE)
@@ -733,6 +744,18 @@ def index():
 
 @app.route("/api/chat", methods=["POST"])
 def chat_endpoint():
+    # Ensure vector store is initialized on first request
+    try:
+        from src.rag.vector_store import get_chroma_client, COLLECTION_NAME, build_index
+        from src.rag.chunker import chunk_all_documents
+        from src.config import KNOWLEDGE_BASE_DIR
+        client = get_chroma_client()
+        collections = [c.name for c in client.list_collections()]
+        if COLLECTION_NAME not in collections or client.get_collection(COLLECTION_NAME).count() == 0:
+            chunks = chunk_all_documents(KNOWLEDGE_BASE_DIR)
+            build_index(chunks)
+    except Exception as e:
+        pass
     data = request.get_json()
     
     if not data or "message" not in data:
